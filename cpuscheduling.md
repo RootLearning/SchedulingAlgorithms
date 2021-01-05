@@ -68,27 +68,36 @@ It treat as circular queue allocate CPU scheduling time interval upto 1 time qua
 
 For Example:  
 
-Process | Burst Time | 
+Process | Arrival Time | Burst time
 ---------|----------|---------
- p1 |  20| 
- p2 |  2| 
- p3 | 3 |   
+ p1 | 3 | 5  
+ p2 | 0 | 8
+ p3 | 1 |  7 
+ p4|  2 |10  
    
-p1->0-4 (P1 reamaining 16 BT)  
-P2->4-6(P2 Finished BT)  
-p3->6-9(p3 Finished BT)  
-P1->9-13(P1 Remaining 12 BT)  
-P1->13-17(P1 Remaining 8 BT)   
-P1->17-21(P1 Remaining 4 BT)    
-P1->21-25(P1 Finished BT)     
+    Quantum time=4 milliseconds
+p2->0-4 (P2 reamaining 4 BT)  
+P3->4-8(P3 Remaining 3 BT)  
+p4->8-12(p4 Remaining 6 BT)  
+P1->12-16(P1 Remaining 1 BT)  
+P2->16-20(P2 Finished BT)   
+P3->20-23(P3 Finished BT)    
+P4->23-27(P4 Remaining 2 BT)  
+P1->27-28(P1 Finished BT)    
+P4->28-30(P4 Finished BT)      
+
+  Process | Arrival Time | Burst time | Completion time | Turn around time |waiting time
+---------|----------|---------|-------|------|-----
+ p1 | 3 | 5  |28 |25|20
+ p2 | 0 | 8  | 20|20|12
+ p3 | 1 |  7 | 23|22|15 
+ p4|  2 |10  | 30|28|18
 ### Average waiting time for the above schedule  
-P1-(4-9)=5  
-P2-(0-4)=4  
-P3-(0-6)=6  
-The average waiting time  
-=5+4+6/3;
-=15/3;  
-=5 milliseconds.   
+ 
+=16.25 milliseconds.  
+### Average turn around time for the above schedule  
+ 
+=23.75 milliseconds.   
 ## ADVANTAGES   
 * RR is a preemptive schedulers.  
 * Every process gets an equal share of the CPU.RR is cyclic in nature,so there is no starvation 
