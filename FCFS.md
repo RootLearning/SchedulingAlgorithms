@@ -10,7 +10,7 @@ When the CPU is free, the first process is allocated to the CPU.
 
 The running process is then removed from the queue.
 
-EXAMPLE PROBLEM:
+**EXAMPLE PROBLEM**:
 
 Process | Arrival time | Burst time
 --------|--------------|-----------
@@ -29,22 +29,25 @@ In the above example, the process P4 came first with an arrival time of 0.
 p4 | p3 | p1 | p2
 ----|-----|-----|-----
 
+### SOLUTION:
 
 
-Process | Arrival Time| Process Time | Waiting Time
-------- | ------- | ------- | -------
-P4 | 0 | 0-2 | 0
-P3 | 1 | 2-7 | 2
-P1 | 2 | 7-10 | 7
-P2 | 3 | 10-14 | 10
 
-#### Average Waiting Time:
+Process | Arrival Time| Waiting Time | Completion Time | Turn around
+--------|---------|---------|------------|-----------
+P1 | 2 | 7 | 10 | 8
+P2 | 3 | 10 | 14 | 11
+P3 | 1 | 2 | 7 | 6
+P4 | 0 | 0 | 2 | 2
+Average Time |  | 19 |  | 27
 
-0+2+7+10=19
+**Average Waiting Time**:
 
-19/4=4.75
+19/4=4.75 miliseconds.
 
-Average Waiting Time=4.75ms
+**Average TurnAround Time**:
+
+27/4=6.75 milliseconds.
 
 
 ### ADVANTAGES:
@@ -64,5 +67,73 @@ Average Waiting Time=4.75ms
 * This results in Convey Effect.
 
 * This effect leads to lower CPU utilization.
+
+### Convey Effect Problem:
+
+
+Process | Arrival Time | Burst Time
+--------|--------------|-----------
+P1 | 2 | 1
+P2 | 0 | 20
+P3 | 3 | 2
+P4 | 1 | 1
+
+In this problem,we can clearly see that the first arrived process has  long burst time and the following process have small burst time.
+
+In this cases,the waiting time for the small burst time process is going to be too long.
+
+### SOLUTION:
+
+p2 | p4 | p1| p3
+----|-----|-----|-----
+
+
+
+
+
+PROCESS | ARRIVAL | WAITING | COMPELTION | Tur around
+--------|---------|---------|------------|-----------
+P1 | 2 | 21 | 22 | 20
+P2 | 0 | 0 | 20 | 20
+P3 | 3 | 22 | 24 | 21
+P4 | 1 | 20 | 21 | 20
+Average Time |  | 63 |  | 81
+
+**Average Waiting time:**
+
+63/4=15.15 milliseconds.
+
+
+**Average TurnAround Time:**
+81/4=20.25 milliseconds.
+
+Thus,it will affect the performance of CPU and consider to be a worst algorithm of all.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
